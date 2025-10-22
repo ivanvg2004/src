@@ -1,6 +1,6 @@
 package com.paint.servlets.controllers;
 
-import com.paint.servlets.models.UserDAO;
+import com.paint.servlets.DAOS.UserDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,18 +22,18 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String user = req.getParameter("user");
         String password = req.getParameter("password");
-        //Determinar si l'usuari existeix al sistema
-        //i a més si ha possat be la password
-        UserDAO userDAO = new UserDAO();
-        boolean userExist = userDAO.checkUser(user, password);
+
+        // Usamos el método estático de UserDAO
+        boolean userExist = UserDAO.checkUser(user, password);
+
         if(userExist){
             //posem dins la sessió l'objecte user
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
 
-            resp.sendRedirect("/private");
+            resp.sendRedirect(req.getContextPath() + "/private");
             return;
-        }else {
+        } else {
             req.setAttribute("message", "Username / password incorrect");
         }
         req.getRequestDispatcher("/WEB-INF/jsp/login.jsp")

@@ -1,4 +1,6 @@
-package com.paint.servlets.models;
+package com.paint.servlets.DAOS;
+
+import com.paint.servlets.models.User;
 
 import java.util.ArrayList;
 import java.util.List;

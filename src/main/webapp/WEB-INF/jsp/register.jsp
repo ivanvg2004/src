@@ -15,13 +15,14 @@
         <p>Usuari:</p>
         <input type = "text" name = "user">
         <p>Password:</p>
+    
         <input type = "password" name = "password">
         <br>
         <input type = "submit">
     </form>
     <div>
         <c:if test = "${not empty message}">
-            ${message}
+            <p style="color:red;">${message}</p>
         </c:if>
     </div>
 </body>

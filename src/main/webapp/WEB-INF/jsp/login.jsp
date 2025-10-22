@@ -11,15 +11,16 @@
     <h2>Login:</h2>
     <form method = "post" action = "/login">
         <p>Usuari:</p>
-        <input type = "text" name = "user">
+        <input type = "text" name = "user" value = "${user}">
         <p>Password:</p>
         <input type = "password" name = "password">
         <br>
+     
         <input type = "submit">
     </form>
     <div>
         <c:if test = "${not empty message}">
-            ${message}
+            <p style="color:red;">${message}</p>
         </c:if>
     </div>
 </body>
