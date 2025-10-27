@@ -8,8 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(value = "/private")
-public class PrivateController extends HttpServlet {
+@WebServlet(value = "/canvas")
+public class CanvasController extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
+                .forward(req, resp);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -19,8 +25,7 @@ public class PrivateController extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
-
-        req.getRequestDispatcher("/WEB-INF/jsp/private.jsp")
+        req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
                 .forward(req, resp);
     }
 }

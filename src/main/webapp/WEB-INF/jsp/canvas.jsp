@@ -1,3 +1,14 @@
+<%@ page isELIgnored="false" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +25,16 @@
         <div class="welcome-card col-md-5 col-lg-4">
             
             <h1 class="display-5 mb-3">Benvingut al meu paint!</h1>
-            <h2 class="h4 fw-normal mb-4">Que vols fer?</h2>
+            <canvas id= "mycanvas" style="border: 1px solid black;" width="500" height="500">
+
+            </canvas>
+            <script>
+                let canvas = document.getElementById("mycanvas");
+                let ctx = canvas.getContext("2d");
             
-            <div class="d-grid gap-3">
-                
-                <form action="/login" method="get">
-                    <button type="submit" class="btn btn-warning btn-lg w-100">Login</button>
-                </form>
-                
-                <form action="/register" method="get">
-                    <button type="submit" class="btn btn-warning btn-lg w-100">Register</button>
-                </form>
-            </div>
-            
+                ctx.fillRect(0,0,100,50);
+            </script>
+
         </div>
         
     </div>

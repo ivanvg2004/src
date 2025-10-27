@@ -23,11 +23,9 @@ public class LoginController extends HttpServlet {
         String user = req.getParameter("user");
         String password = req.getParameter("password");
 
-        // Usamos el método estático de UserDAO
         boolean userExist = UserDAO.checkUser(user, password);
 
         if(userExist){
-            //posem dins la sessió l'objecte user
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
 
@@ -36,6 +34,7 @@ public class LoginController extends HttpServlet {
         } else {
             req.setAttribute("message", "Username / password incorrect");
         }
+
         req.getRequestDispatcher("/WEB-INF/jsp/login.jsp")
                 .forward(req, resp);
     }
