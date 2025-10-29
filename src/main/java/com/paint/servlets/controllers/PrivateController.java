@@ -14,6 +14,7 @@ public class PrivateController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("user");
+        String name = (String) session.getAttribute("name");
 
         if (user == null){
             resp.sendRedirect(req.getContextPath() + "/login");

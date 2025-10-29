@@ -17,13 +17,20 @@
         <div class="welcome-card col-11 col-md-5 col-lg-4">
             
             <h1 class="display-5 mb-3">Benvingut,</h1>
-            <h2 class="h2 text-warning mb-4">${user}</h2>
+            <h2 class="h2 text-warning mb-4">${name}</h2>
             
             <p class="text-secondary">Que vols fer?</p>
             
             <div class="d-grid gap-3">
                 <form action="/canvas" method="get">
                     <button type="submit" class="btn btn-warning btn-lg w-100">Fer un dibuix</button>
+                </form>
+                <form action="/canvas" method="get">
+                    <button type="submit" class="btn btn-warning btn-lg w-100">Mostrar els meus dibuixos</button>
+                </form>
+                </form>
+                <form action="/canvas" method="get">
+                    <button type="submit" class="btn btn-warning btn-lg w-100">Mostrar tots els dibuixos</button>
                 </form>
             </div>
 

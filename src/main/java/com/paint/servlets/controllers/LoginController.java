@@ -1,6 +1,7 @@
 package com.paint.servlets.controllers;
 
 import com.paint.servlets.DAOS.UserDAO;
+import com.paint.servlets.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +32,7 @@ public class LoginController extends HttpServlet {
         if(userExist){
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
-
+            session.setAttribute("name", UserDAO.getName(user));
             resp.sendRedirect(req.getContextPath() + "/private");
             return;
         } else {

@@ -35,4 +35,15 @@ public class UserDAO{
     public static synchronized void addUser(User newUser) {
         userDatabase.add(newUser);
     }
+
+    public static String getName(String username) {
+        String res = "";
+        for (User user : userDatabase) {
+            if (user.getUser().equals(username)) {
+                res = user.getName();
+                break;
+            }
+        }
+        return res;
+    }
 }

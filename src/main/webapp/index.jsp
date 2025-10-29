@@ -17,7 +17,6 @@
             <h2 class="h4 fw-normal mb-4">Que vols fer?</h2>
             
             <div class="d-grid gap-3">
-                
                 <form action="/login" method="get">
                     <button type="submit" class="btn btn-warning btn-lg w-100">Login</button>
                 </form>
