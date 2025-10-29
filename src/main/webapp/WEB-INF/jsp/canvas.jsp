@@ -1,23 +1,15 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/canvas.js" defer></script>
 </head>
 <body>
     <div class="main-container">
@@ -28,13 +20,6 @@
             <canvas id= "mycanvas" style="border: 1px solid black;" width="500" height="500">
 
             </canvas>
-            <script>
-                let canvas = document.getElementById("mycanvas");
-                let ctx = canvas.getContext("2d");
-            
-                ctx.fillRect(0,0,100,50);
-            </script>
-
         </div>
         
     </div>

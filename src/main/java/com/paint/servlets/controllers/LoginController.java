@@ -14,6 +14,9 @@ import java.io.IOException;
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        //si hay una sesion antigua la quita
+        session.invalidate();
         req.getRequestDispatcher("/WEB-INF/jsp/login.jsp")
                 .forward(req, resp);
     }
