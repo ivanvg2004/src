@@ -2,6 +2,7 @@ package com.paint.servlets.controllers;
 
 import com.paint.servlets.DAOS.UserDAO;
 import com.paint.servlets.models.User;
+import com.paint.servlets.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet(value = "/login")
 public class LoginController extends HttpServlet {
+    private UserService userService = new UserService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -27,9 +29,9 @@ public class LoginController extends HttpServlet {
         String user = req.getParameter("user");
         String password = req.getParameter("password");
 
-        boolean userExist = UserDAO.checkUser(user, password);
+        String userName = userService.loginUser(user, password);
 
-        if(userExist){
+        if(userName != null){
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
             session.setAttribute("name", UserDAO.getName(user));

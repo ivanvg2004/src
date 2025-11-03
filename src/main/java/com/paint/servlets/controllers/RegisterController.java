@@ -2,6 +2,7 @@ package com.paint.servlets.controllers;
 
 import com.paint.servlets.models.User;
 import com.paint.servlets.DAOS.UserDAO;
+import com.paint.servlets.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,8 @@ import java.io.IOException;
 
 @WebServlet(value = "/register")
 public class RegisterController extends HttpServlet {
+
+    UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,16 +32,15 @@ public class RegisterController extends HttpServlet {
         String user = req.getParameter("user");
         String password = req.getParameter("password");
 
-        if (UserDAO.doesUsernameExist(user)) {
-            req.setAttribute("message", "Aquest nom d'usuari ja existeix");
-            req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
-        } else {
-            User newUser = new User(name, user, password);
-            UserDAO.addUser(newUser);
+        boolean registrationSuccess = userService.registerUser(name, user, password);
 
+        if (registrationSuccess) {
             req.setAttribute("message", "Usuari registrat correctament! Si us plau, inicia sessió.");
             req.getRequestDispatcher("/WEB-INF/jsp/login.jsp")
                     .forward(req, resp);
+        } else {
+            req.setAttribute("message", "Aquest nom d'usuari ja existeix");
+            req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
         }
     }
 }

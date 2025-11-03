@@ -11,12 +11,6 @@ import java.io.IOException;
 @WebServlet(value = "/canvas")
 public class CanvasController extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
-                .forward(req, resp);
-    }
-
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("user");
@@ -25,6 +19,11 @@ public class CanvasController extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
+        req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
+                .forward(req, resp);
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
                 .forward(req, resp);
     }
