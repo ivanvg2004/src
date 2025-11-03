@@ -14,23 +14,11 @@
 
     <div class="main-container">
         
-        <div class="welcome-card col-11 col-md-5 col-lg-4">
+        <div class="welcome-card col-11 col-md-10 col-lg-8">
+            <h1 class="display-5 mb-3">Llista de dibuixos:</h1>
             
-            <h1 class="display-5 mb-3">Benvingut,</h1>
-            <h2 class="h2 text-warning mb-4">${name}</h2>
-            
-            <p class="text-secondary">Que vols fer?</p>
-            
-            <div class="d-grid gap-3">
-                <form action="/canvas" method="get">
-                    <button type="submit" class="btn btn-warning btn-lg w-100">Fer un dibuix</button>
-                </form>
-                <form action="/dibuixos" method="get">
-                    <button type="submit" class="btn btn-warning btn-lg w-100">Mostrar dibuixos</button>
-                </form>
-            </div>
+        </div>
 
-            </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

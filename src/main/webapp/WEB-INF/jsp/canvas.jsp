@@ -15,11 +15,19 @@
     <div class="main-container">
         
         <div class="welcome-card col-md-5 col-lg-4">
-            
+            <form action="/canvas" method="post">
             <h1 class="display-5 mb-3">Benvingut al meu paint!</h1>
             <canvas id= "mycanvas" style="border: 1px solid black;" width="500" height="500">
 
             </canvas>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="user" name="user" placeholder="Nom del dibuix" required>
+                    <label for="user">Nom del dibuix</label>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning btn-lg w-100">Save</button>
+                </div>
+            </form>
         </div>
         
     </div>

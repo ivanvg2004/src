@@ -10,7 +10,7 @@ public class UserDAO{
     private final static List<User> userDatabase = new ArrayList<>();
 
     static {
-        userDatabase.add(new User("Tom Holland","tom", "12345"));
+        userDatabase.add(new User("admin","admin", "admin"));
         userDatabase.add(new User("Ivan Vargas", "ivaanvargaas", "20004"));
     }
 
