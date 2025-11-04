@@ -28,6 +28,11 @@ public class CanvasController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("drawingName");
         String contingutJson = req.getParameter("drawingContent");
+        if (name == null && contingutJson == null){
+            return;
+        }
+        CanvasDAO.guardarDibuix(name,contingutJson);
+
         req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
                 .forward(req, resp);
     }
