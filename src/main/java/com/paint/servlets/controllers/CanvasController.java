@@ -1,5 +1,7 @@
 package com.paint.servlets.controllers;
 
+import com.paint.servlets.DAOS.CanvasDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,8 @@ public class CanvasController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("drawingName");
+        String contingutJson = req.getParameter("drawingContent");
         req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
                 .forward(req, resp);
     }
