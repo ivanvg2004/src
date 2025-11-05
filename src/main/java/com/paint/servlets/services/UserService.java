@@ -20,4 +20,7 @@ public class UserService {
         UserDAO.addUser(newUser);
         return true;
     }
+    public User getUserByUsername(String username){
+        return UserDAO.getUserByUsername(username);
+    }
 }

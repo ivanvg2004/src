@@ -15,5 +15,16 @@ public class User {
     public String getName() {return name; }
     public String getUser() { return user; }
     public String getPassword() { return password; }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User that = (User) o;
+        return java.util.Objects.equals(user, that.user);
+    }
 
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(user);
+    }
 }

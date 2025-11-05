@@ -28,6 +28,8 @@
                 <form action="/dibuixos" method="get">
                     <button type="submit" class="btn btn-warning btn-lg w-100">Mostrar dibuixos</button>
                 </form>
+                <a href="${pageContext.request.contextPath}/" class="link-warning">Tancar sessio</a>
+        
             </div>
 
             </div>

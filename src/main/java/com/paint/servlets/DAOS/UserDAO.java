@@ -46,4 +46,13 @@ public class UserDAO{
         }
         return res;
     }
+
+    public static User getUserByUsername(String username) {
+        for (User user : userDatabase){
+            if (user.getUser().equals(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
 }
