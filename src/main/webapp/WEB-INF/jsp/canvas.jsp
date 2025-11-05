@@ -71,6 +71,10 @@
                     <ul id="object-list" class="list-group" style="max-height: 250px; overflow-y: auto;">
                     </ul>
 
+                    <hr>
+                    <form action="/private" method="get">
+                        <button type="submit" class="btn btn-warning btn-lg w-100">Sortir</button>
+                    </form>
                 </div>
             </div>
 

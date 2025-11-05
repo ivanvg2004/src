@@ -15,4 +15,5 @@ public class User {
     public String getName() {return name; }
     public String getUser() { return user; }
     public String getPassword() { return password; }
+
 }

@@ -2,9 +2,9 @@ package com.paint.servlets.models;
 
 public class Canvas {
     private String name;
-    private final String[] content;
+    private String content;
 
-    public Canvas(String name, String[] content){
+    public Canvas(String name, String content){
         this.name = name;
         this.content = content;
     }
@@ -17,7 +17,7 @@ public class Canvas {
         this.name = name;
     }
 
-    public String[] getContent() {
+    public String getContent() {
         return content;
     }
 }

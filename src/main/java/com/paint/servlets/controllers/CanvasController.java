@@ -1,6 +1,8 @@
 package com.paint.servlets.controllers;
 
 import com.paint.servlets.DAOS.CanvasDAO;
+import com.paint.servlets.models.Canvas;
+import com.paint.servlets.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,23 +18,27 @@ public class CanvasController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("user");
-
         if (user == null){
             resp.sendRedirect(req.getContextPath() + "/login");
             return;
         }
+
         req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
                 .forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User user = (User) session.getAttribute("user");
+        System.out.println(user);
         String name = req.getParameter("drawingName");
         String contingutJson = req.getParameter("drawingContent");
-        if (name == null && contingutJson == null){
+        if (name.isEmpty() && contingutJson.equals("[]")){
+            resp.sendRedirect(req.getContextPath() + "/canvas");
             return;
+        }else {
+            CanvasDAO.guardarDibuix(user, name, contingutJson);
         }
-        CanvasDAO.guardarDibuix(name,contingutJson);
-
         req.getRequestDispatcher("/WEB-INF/jsp/canvas.jsp")
                 .forward(req, resp);
     }
