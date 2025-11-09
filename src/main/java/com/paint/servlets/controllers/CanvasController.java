@@ -4,6 +4,7 @@ import com.paint.servlets.DAOS.CanvasDAO;
 import com.paint.servlets.DAOS.UserDAO;
 import com.paint.servlets.models.Canvas;
 import com.paint.servlets.models.User;
+import com.paint.servlets.services.CanvasService;
 import com.paint.servlets.services.UserService;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import java.io.IOException;
 @WebServlet(value = "/canvas")
 public class CanvasController extends HttpServlet {
     private UserService userService = new UserService();
+    private CanvasService canvasService = new CanvasService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -32,9 +34,7 @@ public class CanvasController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        // 1. Obtén el USERNAME (String) de la sesión
         String username = (String) session.getAttribute("user");
-        // 2. Llama a tu nuevo metodo para obtener el objeto User
         User user = userService.getUserByUsername(username);
         if (user == null) {
             resp.sendRedirect(req.getContextPath() + "/login");
@@ -47,9 +47,7 @@ public class CanvasController extends HttpServlet {
         if (name.isEmpty() && contingutJson.equals("[]")){
             resp.sendRedirect(req.getContextPath() + "/canvas");
         } else {
-            // 4. Pasa el objeto User al DAO
-            CanvasDAO.guardarDibuix(user, name, contingutJson);
-            // 5. Redirige para evitar que se guarde de nuevo al recargar
+            canvasService.guardarDibuix(user, name, contingutJson);
             resp.sendRedirect(req.getContextPath() + "/canvas");
         }
     }
